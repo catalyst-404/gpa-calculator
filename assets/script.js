@@ -93,7 +93,7 @@ function createCourseRow(data = {}) {
   const deleteBtn = document.createElement("button");
   deleteBtn.type = "button";
   deleteBtn.className = "delete-button";
-  deleteBtn.innerHTML = '<img src="./icons/trash.svg" alt="Delete">';
+  deleteBtn.innerHTML = '<img src="/assets/icons/trash.svg" alt="Delete">';
   deleteBtn.addEventListener("click", () => tr.remove());
   tdDelete.appendChild(deleteBtn);
 
