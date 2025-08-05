@@ -9,7 +9,8 @@ A fast, minimal GPA calculator tailored to my university’s grading system.
 - Input grades and credit hours  
 - Instant GPA calculation  
 - Clean, no-clutter UI  
-- 100% client-side (HTML, CSS, JS)
+- 100% client-side (HTML, CSS, JS)  
+- Fully responsive and mobile-friendly
 
 ## Getting Started
 
