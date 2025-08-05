@@ -118,12 +118,23 @@ td input, td select {
   background: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: var(--danger);
 }
 
 .delete-button img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   filter: invert(100%);
+  pointer-events: none;
 }
 
 .inline-result {
