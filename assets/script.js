@@ -6,7 +6,7 @@ const courseList = [
   { name: "Applications of ICT Lab", credit: 1 },
   { name: "Programming Fundamentals", credit: 3 },
   { name: "Programming Fundamentals Lab", credit: 1 },
-  { name: "Islamic Studies", credit: 3 }
+  { name: "Islamic Studies", credit: 3 },
 ];
 
 const gradeOptions = [
@@ -21,7 +21,7 @@ const gradeOptions = [
   { grade: "C-", gp: 1.7 },
   { grade: "D+", gp: 1.3 },
   { grade: "D", gp: 1 },
-  { grade: "F", gp: 0 }
+  { grade: "F", gp: 0 },
 ];
 
 function getGpaRemark(gpa) {
@@ -76,9 +76,9 @@ function createCourseRow(data = {}) {
     gradeOptions
       .map(
         (g) =>
-          `<option value="${g.gp}" ${
-            data.grade === g.gp ? "selected" : ""
-          }>${g.grade}</option>`
+          `<option value="${g.gp}" ${data.grade === g.gp ? "selected" : ""}>${
+            g.grade
+          }</option>`
       )
       .join("");
   tdGrade.appendChild(selectGrade);
@@ -116,7 +116,9 @@ function updateInlineResult(creditEl, gradeEl, outputEl) {
   if (isNaN(credit) || isNaN(gradePoint)) {
     outputEl.textContent = "";
   } else {
-    outputEl.textContent = `= ${gradePoint} × ${credit} = ${(gradePoint * credit).toFixed(2)}`;
+    outputEl.textContent = `= ${gradePoint} × ${credit} = ${(
+      gradePoint * credit
+    ).toFixed(2)}`;
   }
 }
 
