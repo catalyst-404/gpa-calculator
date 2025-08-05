@@ -1,15 +1,15 @@
 :root {
-  --bg: #000;
-  --surface: #111;
-  --text: #e5e5e5;
-  --primary: #38bdf8;
-  --accent: #c084fc;
-  --danger: #f43f5e;
-  --border: #222;
-  --button-bg: #1e1e1e;
-  --button-hover: #2a2a2a;
+  --bg: hsl(240, 10%, 6%);
+  --surface: hsl(240, 10%, 12%);
+  --text: hsl(0, 0%, 95%);
+  --primary: hsl(210, 85%, 55%);
+  --accent: hsl(270, 95%, 75%);
+  --danger: hsl(350, 85%, 60%);
+  --border: hsl(240, 10%, 20%);
+  --button-bg: hsl(240, 10%, 18%);
+  --button-hover: hsl(240, 10%, 26%);
   --font: ui-monospace, monospace;
-  --radius: 6px;
+  --radius: 8px;
 }
 
 * {
@@ -22,14 +22,14 @@ body {
   font-family: var(--font);
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
   padding: 2rem 1rem;
 }
 
 h1, h2 {
   text-align: center;
   margin-bottom: 0.5rem;
-  color: var(--text);
+  font-weight: 600;
 }
 
 .tagline {
@@ -46,7 +46,7 @@ main {
 
 .table-wrapper {
   overflow-x: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
@@ -54,26 +54,24 @@ main {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   min-width: 600px;
 }
 
 th, td {
   padding: 0.75rem;
   border-bottom: 1px solid var(--border);
-  text-align: left;
 }
 
 th {
   background-color: var(--surface);
   text-align: center;
   font-weight: 600;
-  color: var(--text);
 }
 
 td input, td select {
   width: 100%;
-  padding: 0.4rem;
+  padding: 0.5rem;
   background-color: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
@@ -87,19 +85,20 @@ td input, td select {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .button {
-  padding: 0.65rem 1.4rem;
+  padding: 0.6rem 1.2rem;
   background-color: var(--button-bg);
   color: var(--text);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius);
   cursor: pointer;
-  font-weight: 600;
   font-family: var(--font);
-  transition: background 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .button:hover {
@@ -108,7 +107,7 @@ td input, td select {
 
 .button.primary {
   background-color: var(--primary);
-  color: #000;
+  color: var(--bg);
 }
 
 .button.primary:hover {
@@ -116,7 +115,7 @@ td input, td select {
 }
 
 .delete-button {
-  background: transparent;
+  background: none;
   border: none;
   cursor: pointer;
 }
@@ -137,8 +136,8 @@ td input, td select {
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1rem;
-  margin-top: 1.5rem;
+  padding: 1.2rem;
+  margin-top: 2rem;
 }
 
 .terminal p {
@@ -165,17 +164,16 @@ td input, td select {
 .gpa-summary th {
   background-color: var(--surface);
   color: var(--accent);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .gpa-summary td {
-  background-color: #1a1a1a;
-  color: var(--text);
+  background-color: hsl(240, 10%, 10%);
 }
 
 .grade-scale {
   font-size: 0.85rem;
-  margin: 1.5rem auto 0 auto;
+  margin: 2rem auto 0;
   border-collapse: collapse;
   max-width: 400px;
   width: 100%;
@@ -190,9 +188,7 @@ td input, td select {
 
 .grade-scale th {
   background-color: var(--surface);
-  color: var(--text);
   text-align: center;
-  font-weight: 600;
 }
 
 .grade-scale td:nth-child(2),
@@ -210,17 +206,13 @@ footer {
   margin-top: 3rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #666;
+  color: #777;
 }
 
 @media (max-width: 640px) {
   table {
     font-size: 0.85rem;
     min-width: 100%;
-  }
-
-  .table-wrapper {
-    border: none;
   }
 
   .gpa-table thead {
@@ -243,7 +235,6 @@ footer {
     align-items: center;
     border: none;
     padding: 0.5rem 0;
-    text-align: right;
   }
 
   .gpa-table td::before {
@@ -255,17 +246,6 @@ footer {
     text-align: left;
   }
 
-  .grade-scale {
-    font-size: 0.8rem;
-    max-width: 100%;
-  }
-
-  .grade-scale th,
-  .grade-scale td {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.8rem;
-  }
-
   .gpa-actions {
     flex-direction: column;
     align-items: stretch;
@@ -273,24 +253,13 @@ footer {
 
   .button {
     width: 100%;
-    max-width: 100%;
   }
 
   input, select {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .tagline {
-    font-size: 0.9rem;
-  }
-
-  .terminal,
-  .table-wrapper {
-    font-size: 0.9rem;
-  }
-
-  .gpa-summary th,
-  .gpa-summary td {
-    font-size: 0.9rem;
+  .grade-scale {
+    font-size: 0.8rem;
   }
 }
