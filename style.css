@@ -1,0 +1,296 @@
+:root {
+  --bg: #000;
+  --surface: #111;
+  --text: #e5e5e5;
+  --primary: #38bdf8;
+  --accent: #c084fc;
+  --danger: #f43f5e;
+  --border: #222;
+  --button-bg: #1e1e1e;
+  --button-hover: #2a2a2a;
+  --font: ui-monospace, monospace;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.tagline {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 600px;
+}
+
+th, td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background-color: var(--surface);
+  text-align: center;
+  font-weight: 600;
+  color: var(--text);
+}
+
+td input, td select {
+  width: 100%;
+  padding: 0.4rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+}
+
+.gpa-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.button {
+  padding: 0.65rem 1.4rem;
+  background-color: var(--button-bg);
+  color: var(--text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font);
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+.button.primary {
+  background-color: var(--primary);
+  color: #000;
+}
+
+.button.primary:hover {
+  opacity: 0.95;
+}
+
+.delete-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button img {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%);
+}
+
+.inline-result {
+  font-size: 0.85rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.terminal {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.terminal p {
+  margin-bottom: 0.6rem;
+}
+
+.terminal p strong {
+  color: var(--primary);
+}
+
+.gpa-summary {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.gpa-summary th,
+.gpa-summary td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.gpa-summary th {
+  background-color: var(--surface);
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.gpa-summary td {
+  background-color: #1a1a1a;
+  color: var(--text);
+}
+
+.grade-scale {
+  font-size: 0.85rem;
+  margin: 1.5rem auto 0 auto;
+  border-collapse: collapse;
+  max-width: 400px;
+  width: 100%;
+}
+
+.grade-scale th,
+.grade-scale td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.grade-scale th {
+  background-color: var(--surface);
+  color: var(--text);
+  text-align: center;
+  font-weight: 600;
+}
+
+.grade-scale td:nth-child(2),
+.grade-scale th:nth-child(2) {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.grade-scale tr:last-child td {
+  font-style: italic;
+  color: #888;
+}
+
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@media (max-width: 640px) {
+  table {
+    font-size: 0.85rem;
+    min-width: 100%;
+  }
+
+  .table-wrapper {
+    border: none;
+  }
+
+  .gpa-table thead {
+    display: none;
+  }
+
+  .gpa-table tr {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface);
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+
+  .gpa-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 0.5rem 0;
+    text-align: right;
+  }
+
+  .gpa-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #999;
+    margin-right: 1rem;
+    flex: 1;
+    text-align: left;
+  }
+
+  .grade-scale {
+    font-size: 0.8rem;
+    max-width: 100%;
+  }
+
+  .grade-scale th,
+  .grade-scale td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .gpa-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  input, select {
+    font-size: 0.95rem;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+  }
+
+  .terminal,
+  .table-wrapper {
+    font-size: 0.9rem;
+  }
+
+  .gpa-summary th,
+  .gpa-summary td {
+    font-size: 0.9rem;
+  }
+}
