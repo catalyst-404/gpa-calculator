@@ -188,7 +188,7 @@ document.getElementById("gpa-form").addEventListener("submit", function (e) {
   }, 800);
 
   setTimeout(() => {
-    resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, 100);
 });
 
