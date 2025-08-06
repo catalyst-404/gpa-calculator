@@ -1,30 +1,24 @@
 :root {
   --bg: hsl(240, 10%, 6%);
-  --bg-secondary: hsl(240, 10%, 12%);
-  --text: hsl(0, 0%, 98%);
-  --accent: hsl(210, 85%, 45%);
-  --accent-hover: hsl(210, 85%, 55%);
-  --muted: hsl(0, 0%, 65%);
+  --surface: hsl(240, 10%, 12%);
+  --text: hsl(0, 0%, 95%);
+  --primary: hsl(210, 85%, 55%);
   --danger: hsl(350, 85%, 60%);
   --border: hsl(240, 10%, 20%);
-  --radius: 12px;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --transition: 0.2s ease;
+  --radius: 8px;
+  --font-main: "Inter", sans-serif;
+  --font-code: "JetBrains Mono", monospace;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: background var(--transition), color var(--transition),
-    border var(--transition);
 }
 
 body {
-  font-family: var(--font-sans);
-  background: var(--bg);
+  font-family: var(--font-main);
+  background-color: var(--bg);
   color: var(--text);
   line-height: 1.7;
   padding: 2rem 1rem;
@@ -33,15 +27,14 @@ body {
 h1,
 h2 {
   text-align: center;
-  font-family: var(--font-mono);
-  font-weight: 600;
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .tagline {
   text-align: center;
   font-size: 0.95rem;
-  color: var(--muted);
+  color: #aaa;
   margin-bottom: 2rem;
 }
 
@@ -53,8 +46,6 @@ main {
 .table-wrapper {
   overflow-x: auto;
   margin-bottom: 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
 }
 
 table {
@@ -71,7 +62,7 @@ td {
 }
 
 th {
-  background-color: var(--bg-secondary);
+  background-color: var(--surface);
   text-align: center;
   font-weight: 600;
 }
@@ -80,12 +71,23 @@ td input,
 td select {
   width: 100%;
   padding: 0.5rem;
-  background: var(--bg-secondary);
+  background-color: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
-  border-radius: 6px;
-  font-family: var(--font-sans);
+  border-radius: 4px;
+  font-family: var(--font-main);
   font-size: 0.9rem;
+  transition: outline 0.2s ease;
+}
+
+td input[type="number"] {
+  font-family: var(--font-code);
+}
+
+td input:focus,
+td select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .gpa-actions {
@@ -98,29 +100,33 @@ td select {
 
 .button {
   padding: 0.6rem 1.2rem;
-  background: var(--bg-secondary);
+  background-color: var(--surface);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  font-family: var(--font-mono);
+  font-family: var(--font-main);
   font-size: 0.9rem;
   font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .button:hover {
-  background: var(--border);
+  background-color: hsl(240, 10%, 26%);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .button.primary {
-  background: var(--accent);
+  background-color: var(--primary);
   color: var(--bg);
-  border: none;
 }
 
 .button.primary:hover {
-  background: var(--accent-hover);
+  opacity: 0.95;
 }
 
 .delete-button {
@@ -139,6 +145,11 @@ td select {
   background-color: var(--danger);
 }
 
+.delete-button:focus-visible {
+  outline: 2px solid var(--danger);
+  outline-offset: 2px;
+}
+
 .delete-button img {
   width: 18px;
   height: 18px;
@@ -148,16 +159,32 @@ td select {
 
 .inline-result {
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--primary);
   white-space: nowrap;
+  font-family: var(--font-code);
 }
 
 .terminal {
-  background-color: var(--bg-secondary);
+  background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.2rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-code);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease, box-shadow 0.4s ease;
+  min-height: 4rem;
+}
+
+.terminal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.terminal.highlight {
+  box-shadow: 0 0 0 3px var(--primary);
 }
 
 .terminal p {
@@ -165,7 +192,7 @@ td select {
 }
 
 .terminal p strong {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .gpa-summary {
@@ -182,8 +209,8 @@ td select {
 }
 
 .gpa-summary th {
-  background-color: var(--bg-secondary);
-  color: var(--accent);
+  background-color: var(--surface);
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -197,6 +224,8 @@ td select {
   border-collapse: collapse;
   max-width: 400px;
   width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
 }
 
 .grade-scale th,
@@ -207,7 +236,7 @@ td select {
 }
 
 .grade-scale th {
-  background-color: var(--bg-secondary);
+  background-color: var(--surface);
   text-align: center;
 }
 
@@ -215,18 +244,27 @@ td select {
 .grade-scale th:nth-child(2) {
   text-align: center;
   font-variant-numeric: tabular-nums;
+  font-family: var(--font-code);
 }
 
 .grade-scale tr:last-child td {
   font-style: italic;
-  color: var(--muted);
+  color: #888;
+}
+
+.grade-info {
+  min-height: 450px;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--border);
 }
 
 footer {
   margin-top: 3rem;
   text-align: center;
   font-size: 0.9rem;
-  color: var(--muted);
+  color: #777;
+  font-family: var(--font-main);
 }
 
 @media (max-width: 640px) {
@@ -242,9 +280,8 @@ footer {
   .gpa-table tr {
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-secondary);
+    background-color: var(--surface);
     margin-bottom: 1rem;
-    border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1rem;
   }
@@ -260,7 +297,7 @@ footer {
   .gpa-table td::before {
     content: attr(data-label);
     font-weight: 600;
-    color: var(--muted);
+    color: #999;
     margin-right: 1rem;
     flex: 1;
     text-align: left;
@@ -282,5 +319,14 @@ footer {
 
   .grade-scale {
     font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
   }
 }

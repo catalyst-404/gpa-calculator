@@ -106,20 +106,16 @@ function createCourseRow(data = {}) {
 
   tr.append(tdName, tdCredit, tdGrade, tdGP, tdDelete);
   document.getElementById("courses").appendChild(tr);
-
   return tr;
 }
 
 function updateInlineResult(creditEl, gradeEl, outputEl) {
   const credit = parseFloat(creditEl.value);
   const gradePoint = parseFloat(gradeEl.value);
-  if (isNaN(credit) || isNaN(gradePoint)) {
-    outputEl.textContent = "";
-  } else {
-    outputEl.textContent = `= ${gradePoint} × ${credit} = ${(
-      gradePoint * credit
-    ).toFixed(2)}`;
-  }
+  outputEl.textContent =
+    !isNaN(credit) && !isNaN(gradePoint)
+      ? `= ${gradePoint} × ${credit} = ${(gradePoint * credit).toFixed(2)}`
+      : "";
 }
 
 function addCourse() {
@@ -130,7 +126,8 @@ function addCourse() {
 function clearCourses() {
   document.getElementById("courses").innerHTML = "";
   const resultBox = document.getElementById("result");
-  resultBox.hidden = true;
+  resultBox.classList.remove("show");
+  resultBox.setAttribute("aria-hidden", "true");
   resultBox.innerHTML = "";
 }
 
@@ -153,7 +150,8 @@ document.getElementById("gpa-form").addEventListener("submit", function (e) {
   const resultBox = document.getElementById("result");
 
   if (totalCredits === 0) {
-    resultBox.hidden = true;
+    resultBox.classList.remove("show");
+    resultBox.setAttribute("aria-hidden", "true");
     resultBox.innerHTML = "";
     return;
   }
@@ -181,7 +179,17 @@ document.getElementById("gpa-form").addEventListener("submit", function (e) {
     </table>
   `;
 
-  resultBox.hidden = false;
+  resultBox.classList.add("show");
+  resultBox.setAttribute("aria-hidden", "false");
+
+  resultBox.classList.add("highlight");
+  setTimeout(() => {
+    resultBox.classList.remove("highlight");
+  }, 800);
+
+  setTimeout(() => {
+    resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 100);
 });
 
 document.addEventListener("keydown", (e) => {
