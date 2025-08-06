@@ -1,21 +1,36 @@
 # GPA Calculator
 
-A fast, minimal GPA calculator tailored to my university’s grading system.
+A fast, minimal GPA calculator built for UET's grading system.
 
-**Live:** [umerk.me/gpa-calculator](https://umerk.me/gpa-calculator/)
+**Live site:** [umerk.me/gpa-calculator](https://umerk.me/gpa-calculator/)
 
-## Features
+## ✨ Features
 
-- Input grades and credit hours
+- Clean no-clutter UI
 - Instant GPA calculation
-- Clean, no-clutter UI
-- 100% client-side (HTML, CSS, JS)
+- Grade-to-GPA scale (UET policy)
 - Fully responsive and mobile-friendly
+- 100% client-side (HTML CSS JS)
+- No frameworks or dependencies
 
-## Getting Started
+## 🛠 Tech Stack
 
-You can use the [live site](https://umerk.me/gpa-calculator/) directly, or clone the repo and open `index.html` in your browser.
+- HTML
+- CSS (custom, responsive, variable-based)
+- JavaScript (vanilla)
 
-## License
+## 🚀 Getting Started
+
+Use the [live site](https://umerk.me/gpa-calculator/) or run it locally:
+
+```bash
+git clone https://github.com/umerkniazi/gpa-calculator.git
+cd gpa-calculator
+npx serve .
+```
+
+Or just open `index.html` directly in your browser.
+
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).

@@ -84,7 +84,7 @@ function createCourseRow(data = {}) {
   tdGrade.appendChild(selectGrade);
 
   const tdGP = document.createElement("td");
-  tdGP.setAttribute("data-label", "GP");
+  tdGP.setAttribute("data-label", "Grade Points");
   const resultDiv = document.createElement("div");
   resultDiv.className = "inline-result";
   tdGP.appendChild(resultDiv);
@@ -182,6 +182,13 @@ document.getElementById("gpa-form").addEventListener("submit", function (e) {
   `;
 
   resultBox.hidden = false;
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
+    e.preventDefault();
+    addCourse();
+  }
 });
 
 courseList.forEach(createCourseRow);
