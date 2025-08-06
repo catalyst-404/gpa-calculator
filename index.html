@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GPA Calculator</title>
 
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,70 +48,87 @@
 
       <div id="result" class="terminal" aria-hidden="true"></div>
 
-      <table class="grade-scale">
-        <thead>
-          <tr>
-            <th>Grade</th>
-            <th>Grade Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>A+</td>
-            <td>4.0</td>
-          </tr>
-          <tr>
-            <td>A</td>
-            <td>4.0</td>
-          </tr>
-          <tr>
-            <td>A−</td>
-            <td>3.7</td>
-          </tr>
-          <tr>
-            <td>B+</td>
-            <td>3.3</td>
-          </tr>
-          <tr>
-            <td>B</td>
-            <td>3.0</td>
-          </tr>
-          <tr>
-            <td>B−</td>
-            <td>2.7</td>
-          </tr>
-          <tr>
-            <td>C+</td>
-            <td>2.3</td>
-          </tr>
-          <tr>
-            <td>C</td>
-            <td>2.0</td>
-          </tr>
-          <tr>
-            <td>C−</td>
-            <td>1.7</td>
-          </tr>
-          <tr>
-            <td>D+</td>
-            <td>1.3</td>
-          </tr>
-          <tr>
-            <td>D</td>
-            <td>1.0</td>
-          </tr>
-          <tr>
-            <td>F</td>
-            <td>0.0</td>
-          </tr>
-          <tr>
-            <td colspan="2">Typical 4.0 Scale</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="grade-info">
+        <h2 class="scale-heading">Grade to GPA Conversion Scale</h2>
+        <p class="tagline">
+          The following table was used in the calculation and follows UET's
+          official grading policy.
+        </p>
+
+        <table class="grade-scale">
+          <thead>
+            <tr>
+              <th>Grade</th>
+              <th>Grade Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A+</td>
+              <td>4.0</td>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td>4.0</td>
+            </tr>
+            <tr>
+              <td>A−</td>
+              <td>3.7</td>
+            </tr>
+            <tr>
+              <td>B+</td>
+              <td>3.3</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>3.0</td>
+            </tr>
+            <tr>
+              <td>B−</td>
+              <td>2.7</td>
+            </tr>
+            <tr>
+              <td>C+</td>
+              <td>2.3</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td>2.0</td>
+            </tr>
+            <tr>
+              <td>C−</td>
+              <td>1.7</td>
+            </tr>
+            <tr>
+              <td>D+</td>
+              <td>1.3</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td>1.0</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>0.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
 
-    <footer>Made with ☕ by Umer</footer>
+    <footer>
+      <p>© 2025 Umer Khan Niazi</p>
+      <p>
+        Built by
+        <a
+          href="https://umerk.me"
+          target="_blank"
+          style="color: inherit; text-decoration: underline"
+        >
+          Umer Khan Niazi
+        </a>
+      </p>
+    </footer>
 
     <script src="assets/script.js"></script>
   </body>
