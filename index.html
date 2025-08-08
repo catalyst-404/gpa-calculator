@@ -642,14 +642,9 @@
 
     <script>
       const courseList = [
-        { name: "Functional English", credit: 3 },
-        { name: "Calculus and Analytic Geometry", credit: 3 },
-        { name: "Discrete Mathematics", credit: 2 },
-        { name: "Applications of ICT", credit: 2 },
-        { name: "Applications of ICT Lab", credit: 1 },
-        { name: "Programming Fundamentals", credit: 3 },
-        { name: "Programming Fundamentals Lab", credit: 1 },
-        { name: "Islamic Studies", credit: 3 },
+        { name: "Programming Fundamentals", credit: 3, grade: "A" },
+        { name: "Discrete Mathematics", credit: 2, grade: "B+" },
+        {}, // empty row
       ];
 
       const gradeOptions = [
@@ -728,7 +723,7 @@
             .map(
               (g) =>
                 `<option value="${g.gp}" ${
-                  data.grade === g.gp ? "selected" : ""
+                  data.grade === g.grade ? "selected" : ""
                 }>${g.grade}</option>`
             )
             .join("");
@@ -752,7 +747,9 @@
         deleteBtn.setAttribute("aria-label", "Delete course");
         deleteBtn.innerHTML = `
           <svg class="delete-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"></path>
+                  <path
+                    d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"
+                  ></path>
           </svg>
         `;
         deleteBtn.addEventListener("click", () => {
@@ -814,11 +811,16 @@
       });
 
       document.getElementById("clear-courses").addEventListener("click", () => {
-        document.getElementById("courses").innerHTML = "";
+        const coursesBody = document.getElementById("courses");
+        coursesBody.innerHTML = ""; // remove all rows
+
+        // hide any results or warnings
         document.getElementById("result").classList.remove("show");
         document.getElementById("warning").classList.remove("show");
-      });
 
+        // add one empty row so the user can start typing right away
+        createCourseRow({});
+      });
       document
         .getElementById("gpa-form")
         .addEventListener("submit", function (e) {
@@ -867,13 +869,8 @@
           resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
         });
 
-      // Load default courses with pre-selected credits
-      courseList.forEach((course) =>
-        createCourseRow({
-          name: course.name,
-          credit: course.credit,
-        })
-      );
+      // Load default courses with pre-selected credits and grades
+      courseList.forEach((course) => createCourseRow(course));
     </script>
   </body>
 </html>
